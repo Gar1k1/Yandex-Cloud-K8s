@@ -30,5 +30,3 @@ Cloud-K8s-Deployment
     ├── variables.auto.tfvars
     ├── variables.tf
     └── vpc.tf
-
-🚀 DevOps junior: Garik Biarslanov
