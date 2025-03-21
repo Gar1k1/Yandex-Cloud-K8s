@@ -1,0 +1,10 @@
+network_name       = "piggymetrics-vpc"
+network_id         = "enp2leepit3i4q19p8nm"
+auto_scale_min     = 2
+auto_scale_max     = 8
+auto_scale_initial = 2
+node_labels_role   = "firs-cluster"
+node_labels_env    = "cluster"
+service-account    = "piggymetrics-sa"
+folder_id          = "b1gud4bahvag71pk0hvr"
+cloud_id           = "b1gc50p1kc7msn8lt9db"
