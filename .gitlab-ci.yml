@@ -1,0 +1,36 @@
+default:
+  tags:
+    - my-gitlab-runner
+
+variables:
+  YC_CLOUD_ID: "b1gc50p1kc7msn8lt9db"
+  YC_FOLDER_ID: "b1gud4bahvag71pk0hvr"
+  TF_DIR: "/home/garik/Yandex-Cloud-K8s/terraform"
+  TF_VAR_service_account_key_file: "$CI_PROJECT_DIR/key.json"
+
+stages:
+  - plan
+  - apply
+
+before_script:
+  - echo "$SERVICE_ACCOUNT_JSON" | base64 -d > $CI_PROJECT_DIR/key.json
+
+.plan:
+  stage: plan
+  image: cr.yandex/crplv5314jih4ohi8o28/terraform-runner:1.0.0
+  script:
+    - cd $TF_DIR
+    - tfswitch
+    - terraform init
+    - terraform validate
+    - terraform plan
+
+.apply:
+  stage: apply
+  image: cr.yandex/crplv5314jih4ohi8o28/terraform-runner:1.0.0
+  script:
+    - cd $TF_DIR
+    - tfswitch
+    - terraform init
+    - terraform validate
+    - terraform apply -auto-approve
